@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 
-const protect = (req, res, next) => {
+exports.protect = (req, res, next) => {
   const token = req.headers.authorization?.split(" ")[1];
 
   if (!token) return res.status(401).json({ message: "No token" });
@@ -17,7 +17,7 @@ const protect = (req, res, next) => {
 };
 
 
-const isAdmin = (req,res,next) => {
+exports.isAdmin = (req,res,next) => {
     try {
         console.log(req.user.role);
 
@@ -33,4 +33,4 @@ const isAdmin = (req,res,next) => {
     }
 }
 
-module.exports = {protect, isAdmin};
+
